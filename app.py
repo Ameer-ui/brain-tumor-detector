@@ -6,7 +6,7 @@ from PIL import Image
 import gdown
 import os
 
-st.title("🧠 Brain Tumor Detection (Binary)")
+st.title("🧠 Brain Tumor Detection")
 
 # Download model from Google Drive if not exists
 model_url = 'https://drive.google.com/uc?id=1pgu7O2OqH-QWxVBjb6KvmNu1F1UbGqKf'  # Replace with your ID
@@ -36,6 +36,7 @@ if uploaded_file is not None:
         result = "Tumor Detected"
     else:
         result = "No Tumor"
+
 
 
 
