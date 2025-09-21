@@ -17,3 +17,26 @@ if not os.path.exists(model_path):
 
 # Load model
 model = load_model(model_path)
+
+uploaded_file = st.file_uploader("Upload an MRI image", type=["jpg","jpeg","png"])
+
+if uploaded_file is not None:
+    # Display uploaded image
+    img = Image.open(uploaded_file)
+    st.image(img, caption='Uploaded MRI', use_column_width=True)
+
+    # Preprocess the image
+    img = img.resize((224, 224))
+    img_array = np.array(img) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
+
+    # Make prediction
+    pred = model.predict(img_array)[0][0]
+
+    # Show result
+    if pred > 0.5:
+        result = "Tumor Detected"
+    else:
+        result = "No Tumor Detected"
+
+    st.success(f"Prediction: {result} (Confidence: {pred:.2f})")
