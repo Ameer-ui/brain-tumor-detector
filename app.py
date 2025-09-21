@@ -35,7 +35,8 @@ if uploaded_file is not None:
     if pred > 0.5:
         result = "Tumor Detected"
     else:
-        result = "No Tumor
+        result = "No Tumor"
+
 
 
 
